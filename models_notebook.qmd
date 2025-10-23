@@ -47,7 +47,7 @@ SciViews::R("model", lang = "fr")
 
 ```{r import}
 # Lecture des données
-microp <- read("data/Dataset.xlsx")
+microp <- read("data/microp.rds")
 # Tableau des premières et dernières lignes
 tabularise$headtail(microp)
 
@@ -66,10 +66,13 @@ tabularise$headtail(microp)
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 
 ```{r chart2}
-
+chart(data = microp, fvfm ~ plast_tot %col=% depth_rec)+
+  geom_point()
 ```
 
-... interprétation #2...
+La concentration de microplastique totale augmente l'efficacité de la photosynthèse des phytoplancton. La profondeur de l'océan ne semble pas avoir d'impact sur l'efficacité de la photosynthèse. Tout de même les phytoplanctons les moins efficaces sont ceux en grande profondeur.
+
+Le nuage de point montre une tendance qui s'apparente à une droite. Cependant le nuage de point ne forme pas une droite parfaite. Des analyses ultérieures seront nécessaires pour déterminer si ce modèle est bon.
 
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
