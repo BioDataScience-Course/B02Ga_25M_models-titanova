@@ -47,15 +47,9 @@ SciViews::R("model")
 
 ```{r import}
 # Lecture des données
-<<<<<<< HEAD
- <- 
+microp <- read("data/Dataset.xlsx")
 # Tableau des premières et dernières lignes
-tabularise$headtail()
-=======
-corals <- read("data/Chl-Zoox.csv")
-# Tableau des premières et dernières lignes
-tabularise$headtail(corals)
->>>>>>> 62564abff9d11d84bd9ec70b489b6b2d4a8302c1
+tabularise$headtail(microp)
 ```
 
 ### Description des données
