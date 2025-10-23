@@ -73,9 +73,8 @@ tabularise$headtail(microp)
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-chart(data=microp, temp~depth %col=% depth )+
+chart(data=microp,  chla_fluo ~plast_tot)+
   geom_point()
-  
 ```
 
 ... interprétation #3...
