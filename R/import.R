@@ -2,6 +2,11 @@
 
 
 # Etape 1 : Importation des données brutes --------------------------------
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+knitr::opts_chunk$set(dev = "ragg_png")
+
 SciViews::R("model", lang ="fr")
 microp <- read("data/Dataset.xlsx")
 
@@ -21,5 +26,5 @@ microp <- labelise (microp,
   units = list(temp ="°C", depth ="m", plast_tot = "g.cm^-3", plast_ps = "g.cm^-3", plast_pp = "g.cm^-3", plast_pe = "g.cm^-3", plast_pvc = "g.cm^-3", plast_pe = "g.cm^-3", ammonium = "mg.m^-3", chla_fluo = "mg.m^-3" ))
 
 # Etape 5 : Sauvegarde locale des données retravaillées -------------------
-writes$rds(microp, "data/microp.rds")
+write$rds(microp, "data/microp.rds")
 rm(microp)
