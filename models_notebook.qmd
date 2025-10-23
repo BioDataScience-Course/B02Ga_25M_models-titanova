@@ -50,6 +50,7 @@ SciViews::R("model")
 microp <- read("data/Dataset.xlsx")
 # Tableau des premières et dernières lignes
 tabularise$headtail(microp)
+
 ```
 
 ### Description des données
