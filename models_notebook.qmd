@@ -73,7 +73,9 @@ tabularise$headtail(microp)
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-
+chart(data=microp, temp~depth %col=% depth )+
+  geom_point()
+  
 ```
 
 ... interprétation #3...
