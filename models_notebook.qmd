@@ -99,6 +99,24 @@ chart(data=microp,  chla_fluo ~plast_tot)+
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
 
+```{r}
+lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1
+chart(microp_lm1)
+```
+
+```{r}
+summary(microp_lm1) %>.%
+  tabularise(.)
+```
+
+```{r}
+chart$residuals(microp_lm1)
+```
+
+$$
+`eq_(microp_lm1, use_coefs = TRUE)´
+$$
+
 #### Régression linéaire 2
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
