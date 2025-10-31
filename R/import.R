@@ -7,6 +7,9 @@
 
 # Etape 2 : Description brève des données ---------------------------------
 
+skimr::skim(microp)
+
+
 
 
 # Etape 3 : Nettoyage des données  ----------------------------------------
