@@ -77,11 +77,11 @@ Le nuage de point montre une tendance qui s'apparente à une droite. Cependant l
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-chart(data=microp,  chla_fluo ~plast_tot)+
+chart(data=microp,plast_tot ~chla_fluo)+
   geom_point()
 ```
 
-... interprétation #3...
+Les points sons assez espacés. On remarque la présence de valeurs extrêmes. On peut observer que quand la concentration en microplastique sera faible, la masse en phtoplancton le sera aussi. Cependant cette observation est à prendre avec des pincettes : on peut également remarquer une très grande concentration en microplastique mais une masse de phytoplancton moyenne.
 
 <!--% Graphique et interprétation de l'étudiant #4 ci-dessous. -->
 
@@ -120,6 +120,22 @@ $$
 #### Régression linéaire 2
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
+
+```{r}
+microp_lm2 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2))
+chart(microp_lm2)
+
+```
+
+```{r}
+tabularise(summary_(microp_lm2))
+```
+
+```{r}
+chart$residuals(microp_lm2)
+```
+
+Le modèle est significatif au seuil alpha de 5%.Par contre, la variable alpha n'est pas significative au seuil alphe de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
 
 #### Modèle linéaire 1
 
