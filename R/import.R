@@ -27,6 +27,13 @@ microp$depth_rec <- cut(microp$depth,
   dig.lab = 4,
   breaks = c(-11.75, -2.5, 1.75)
 )
+## Recodage de microp$temp en microp$temp_rec
+microp$temp_rec <- cut(microp$temp,
+  include.lowest = TRUE,
+  right = FALSE,
+  dig.lab = 4,
+  breaks = c(21, 23.5, 25)
+)
 # Etape 4 : Ajout des labels et des unités --------------------------------
 
 microp <- labelise (microp,
