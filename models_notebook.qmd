@@ -29,10 +29,8 @@ Le but de cette étude est d'évaluer l'impact direct et indirect des microplast
 <!--% Indiquez ici d'où viennent les données et aussi quel logiciel (et version) vous utilisez pour les analyses. Inspirez-vous des projets du premier module de SDD II. -->
 
 Les données de cette étude proviennent du dépot Zenodo de Montaya et al. (2023) [@Montaya2023].
-Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`)
-Le jeu de données est légèrement remanié (traitement documenté dans le fichier `R/import_micropop.R`).
- 
- et en particulier le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version finale de ce bloc-notes.
+Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes.
+Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
 
 ## Analyses
 
@@ -122,7 +120,8 @@ chart$residuals(microp_lm1)
 $$
 `eq_(microp_lm1, use_coefs = TRUE)´
 $$
-Le modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre a un R² assez faible et une p-value significative. Les valeurs p  de chaque paramètre sont aussi significatives. l'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne. La distribution des résidus est normale, on observe quelques valeurs extrêmes. Il n'y a pas d'homoscédatiscité des résidus et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs.
+La mise en graphique du modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre ne montre pas une tendance linéaire mais plutot en parabole décroissante.
+Ce modèle a un R² ajusté assez faible et une p-value significative. Les p-valeurs de chaque paramètre sont aussi significatives. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
 
 #### Régression linéaire 2
 
@@ -163,6 +162,8 @@ chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
 ```{r}
 chart$residuals(microp_lm3)
 ```
+
+Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 #### Modèle linéaire 2
 
