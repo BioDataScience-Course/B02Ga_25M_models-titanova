@@ -77,7 +77,7 @@ Le nuage de point montre une tendance qui s'apparente à une droite. Cependant l
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-chart(data=microp,plast_tot ~chla_fluo)+
+chart(data=microp, chla_fluo ~plast_tot )+
   geom_point()
 ```
 
@@ -144,6 +144,11 @@ Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha 
 #### Modèle linéaire 2
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
+
+```{r}
+microp_lm4 <- lm(data= microp, hna ~ ammonium * mesocosm)
+tabularise(summary_(microp_lm4)) 
+```
 
 #### Modèle linéaire généralisé et/ou mixte 1
 
