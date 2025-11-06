@@ -21,8 +21,7 @@ bibliography: references.bib
 
 <!--% Rédigez une courte introduction de 3 ou 5 phrases qui présente vos données. Ajoutez une phrase de but (que vous remanierez éventuellement en fonction des modèles que vous ajouterez plus tard). Vous pouvez citer la bibliographie en utilisant le formatage Markdown ad hoc et en incluant votre référence au format bibtex dans le fichier references.bib. -->
 
-Les données viennent de l'étude expérimentale de Montaya et al.(2023) [@Montaya2023] qui étudie comment les microplastiques impactent la structure des communautés microbiennes dans le mésocosme. On dispose de variables de structure telles que la proportion en HNA/LNA et de fonctionnalité (c'est-à-dire directement liées à la photosynthèse) telles que la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types.
-Le but de cette étude est d'évaluer l'impact direct et indirect des microplastiques sur les populations phytoplanctoniques et bactériennes et l'effet sur la productivité marine, ce qui affecte tout l'écosystème marin étant donné que ces populations sont à la base de la chaine alimentaire.
+Les données viennent de l'étude expérimentale de Montaya et al.(2023) [@Montaya2023] qui étudie comment les microplastiques impactent la structure des communautés microbiennes dans le mésocosme. On dispose de variables de structure telles que la proportion en HNA/LNA et de fonctionnalité (c'est-à-dire directement liées à la photosynthèse) telles que la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types. Le but de cette étude est d'évaluer l'impact direct et indirect des microplastiques sur les populations phytoplanctoniques et bactériennes et l'effet sur la productivité marine, ce qui affecte tout l'écosystème marin étant donné que ces populations sont à la base de la chaine alimentaire.
 
 ## Matériel et méthodes
 
@@ -30,7 +29,7 @@ Le but de cette étude est d'évaluer l'impact direct et indirect des microplast
 
 Les données de cette étude proviennent du dépot Zenodo de Montaya et al. (2023) [@Montaya2023].
 Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes.
-Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
+Le jeu de données est remanié (documenté dans le fichier `R/import.R`).e
 
 ## Analyses
 
@@ -65,7 +64,7 @@ chart(data=microp, ammonium ~ plast_tot %col=% temp)+
   geom_point()
 ```
 
-La concentration en microplastique totale augmente en fonction de la concentration en ammonium. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populations microbiennes ici étudiées.
+La concentration en microplastique totale augmente en fonction de la concentration en ammonium. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populatiosn microbiennes ici étudiées.
 
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 
@@ -148,7 +147,7 @@ Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3
+lm(data = microp, fvfm ~ plast_pvc * depth_rec)-> microp_lm3
 summary(microp_lm3) %>.%
 tabularise(.)
 ```
@@ -170,9 +169,21 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_lm4 <- lm(data= microp, hna ~ ammonium * mesocosm)
-tabularise(summary_(microp_lm4)) 
+microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec +0 )
+tabularise(summary_(microp_lm4))
 ```
+
+```{r}
+chart$residuals(microp_lm4)
+```
+
+```{r}
+chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
+```
+
+Le modèle est significatif au seuil alpha de 5%. Le R2 est bon avec une valeur de 0,8674. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température. L'étendue des résidus est élevée (2.5) par rapport à l'étendue
 
 #### Modèle linéaire généralisé et/ou mixte 1
 
