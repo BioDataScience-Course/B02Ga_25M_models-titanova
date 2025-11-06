@@ -91,7 +91,8 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm)+
   geom_point()
 ```
 
-Ce graphique présente l'efficacité de la photosynthèse en fonction de la concentration de l'ammonium dans les différents mésocosme. L'efficacité photosynthétique est très élevée pour des très faible concentration de l'ammonium. Cette dernière semble ne pas impacter sur l'efficacité photosynthétique.
+Ce graphique présente l'efficacité de la photosynthèse en fonction de la concentration de l'ammonium dans les différents mésocosme. L'efficacité photosynthétique est très élevée pour des très faible concentration de l'ammonium. Cette dernière semble ne pas impacter sur l'efficacité photosynthétique. L'efficacité la plus élevée est observée dans le mésocosme 5 à 5,5.
+
 
 ### Modélisation
 
