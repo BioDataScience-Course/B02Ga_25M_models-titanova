@@ -72,18 +72,18 @@ La concentration en microplastique totale augmente en fonction de la concentrati
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 
 ```{r chart2}
-chart(data = microp, fvfm ~ plast_tot %col=% depth_rec)+
+chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec)+
   geom_point()
 ```
 
-La concentration de microplastique totale augmente l'efficacité de la photosynthèse des phytoplancton. La profondeur de l'océan ne semble pas avoir d'impact sur l'efficacité de la photosynthèse. Tout de même les phytoplanctons les moins efficaces sont ceux en grande profondeur.
+La concentration de Chlorure de polyvinyle augmente l'efficacité de la photosynthèse des phytoplancton. La profondeur de l'océan ne semble pas avoir d'impact sur l'efficacité de la photosynthèse. Tout de même les phytoplanctons les moins efficaces sont ceux en grande profondeur.
 
 Le nuage de point montre une tendance qui s'apparente à une droite. Cependant le nuage de point ne forme pas une droite parfaite. Des analyses ultérieures seront nécessaires pour déterminer si ce modèle est bon.
 
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-chart(data=microp,plast_tot ~chla_fluo)+
+chart(data=microp, chla_fluo ~plast_tot )+
   geom_point()
 ```
 
@@ -148,9 +148,30 @@ Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha 
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
+```{r}
+lm(data = microp, fvfm ~ plast_pvc * depth_rec)-> microp_lm3
+summary(microp_lm3) %>.%
+tabularise(.)
+```
+
+```{r}
+chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
+```
+
+```{r}
+
+```
+
 #### Modèle linéaire 2
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
+
+```{r}
+microp_lm4 <- lm(data= microp, hna ~ ammonium * mesocosm)
+tabularise(summary_(microp_lm4)) 
+```
 
 #### Modèle linéaire généralisé et/ou mixte 1
 
