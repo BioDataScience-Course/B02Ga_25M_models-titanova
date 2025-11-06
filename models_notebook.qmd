@@ -155,7 +155,7 @@ chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
 ```
 
 ```{r}
-chart$residuals(microp_lm3)
+
 ```
 
 #### Modèle linéaire 2
@@ -166,7 +166,6 @@ chart$residuals(microp_lm3)
 microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec +0 )
 tabularise(summary_(microp_lm4))
 ```
-
 
 ```{r}
 chart$residuals(microp_lm4)
