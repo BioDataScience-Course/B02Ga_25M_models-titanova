@@ -148,7 +148,7 @@ Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-lm(data = microp, fvfm ~ plast_pvc * depth_rec)-> microp_lm3
+lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3
 summary(microp_lm3) %>.%
 tabularise(.)
 ```
