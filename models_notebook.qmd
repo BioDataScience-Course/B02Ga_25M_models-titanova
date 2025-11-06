@@ -189,7 +189,6 @@ Le modèle est significatif au seuil alpha de 5%. Le R2 est bon avec une valeur 
  
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Le nuage de point n'est peut-être pas si similaire à une droite. Les données suivent une distribution normale. La répartition des données ne montre pas un signe d'homoscédasticité. Il y a présence de quelques valeurs extrêmes. Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse. Il n'est pas certain que les données se distribuent su une droite.
 
-
 #### Modèle linéaire généralisé et/ou mixte 1
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
