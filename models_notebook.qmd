@@ -155,7 +155,7 @@ chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
 ```
 
 ```{r}
-chart$residuals(microp_lm3)
+
 ```
 
 #### Modèle linéaire 2
