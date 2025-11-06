@@ -171,6 +171,8 @@ tabularise(summary_(microp_lm4))
 ```{r}
 chart$residuals(microp_lm4)
 ```
+Le modèle est significatif au seuil alpha de 5%. Le R2 est bon avec une valeur de 0,8674. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.
+L'étendue des résidus est élevée (2.5) par rapport à l'étendue 
 
 #### Modèle linéaire généralisé et/ou mixte 1
 
