@@ -209,7 +209,7 @@ L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs
 ```{r}
 microp_glm <- glm(data = microp, fvfm ~ ammonium, family = poisson)
 summary_(microp_glm) |> tabularise()
-
+```
 #### Modèle linéaire généralisé et/ou mixte 2
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
