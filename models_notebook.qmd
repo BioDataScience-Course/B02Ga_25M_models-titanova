@@ -21,7 +21,7 @@ bibliography: references.bib
 
 <!--% Rédigez une courte introduction de 3 ou 5 phrases qui présente vos données. Ajoutez une phrase de but (que vous remanierez éventuellement en fonction des modèles que vous ajouterez plus tard). Vous pouvez citer la bibliographie en utilisant le formatage Markdown ad hoc et en incluant votre référence au format bibtex dans le fichier references.bib. -->
 
-Les données viennent de l'étude expérimentale de Montaya et al.(2023) [@Montaya2023] qui étudie comment les microplastiques impactent la structure des communautés microbiennes dans le mésocosme. On dispose de variables de structure telles que la proportion en HNA/LNA et de fonctionnalité (c'est-à-dire directement liées à la photosynthèse) telles que la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types. Le but de cette étude est d'évaluer l'impact direct et indirect des microplastiques sur les populations phytoplanctoniques et bactériennes et l'effet sur la productivité marine, ce qui affecte tout l'écosystème marin étant donné que ces populations sont à la base de la chaine alimentaire.
+Les données viennent de l'étude expérimentale de Montaya et al. [-@Montoya2023] qui étudie comment les microplastiques impactent la structure des communautés microbiennes dans le mésocosme. On dispose de variables de structure telles que la proportion en HNA/LNA et de fonctionnalité (c'est-à-dire directement liées à la photosynthèse) telles que la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types. Le but de cette étude est d'évaluer l'impact direct et indirect des microplastiques sur les populations phytoplanctoniques et bactériennes et l'effet sur la productivité marine, ce qui affecte tout l'écosystème marin étant donné que ces populations sont à la base de la chaine alimentaire.
 
 ## Matériel et méthodes
 
@@ -91,7 +91,7 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm)+
   geom_point()
 ```
 
-Ce graphique présente l'efficacité de la photosynthèse en fonction de la concentration de l'ammonium dans les différents mésocosme. L'efficacité photosynthétique est très élevée pour des très faible concentration de l'ammonium. Cette dernière semble ne pas impacter sur l'efficacité photosynthétique.
+Ce graphique présente l'efficacité de la photosynthèse en fonction de la concentration de l'ammonium dans les différents mésocosme. L'efficacité photosynthétique est très élevée pour des très faible concentration de l'ammonium. Cette dernière semble ne pas impacter sur l'efficacité photosynthétique. L'efficacité la plus élevée est observée dans le mésocosme 5 à 5,5.
 
 ### Modélisation
 
@@ -176,7 +176,7 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec +0 )
+microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec )
 tabularise(summary_(microp_lm4))
 ```
 
@@ -190,7 +190,6 @@ chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-
 $$
 `r eq__(microp_lm4, use_coefs = TRUE)`
 $$
@@ -200,12 +199,14 @@ Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fo
 
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Les données suivent une distribution normale (B). La répartition des données ne montre pas un signe d'homoscédasticité (C), de nombreuses valeurs sont présentes en un même point. Il y a présence de quelques valeurs extrêmes (D). Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse surtout à cause de la répartition des données.
 
-
 #### Modèle linéaire généralisé et/ou mixte 1
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
+```{r}
+microp_glm <- glm(data = microp, fvfm ~ ammonium, family = gaussian)
+summary_(microp_glm) |> tabularise()
+```
 
-#### Modèle linéaire généralisé et/ou mixte 2
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
