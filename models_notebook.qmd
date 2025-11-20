@@ -181,6 +181,16 @@ tabularise(summary_(microp_lm4))
 ```
 
 ```{r}
+microp_lm5 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
+tabularise(summary_(microp_lm5)) 
+```
+```{r}
+anova(microp_lm4, microp_lm5, test = "F") |> tabularise()
+AIC(microp_lm4, microp_lm5)
+```
+
+
+```{r}
 chart$residuals(microp_lm4)
 ```
 
@@ -219,6 +229,7 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé.
 
 #### Modèle linéaire généralisé et/ou mixte 2
 
@@ -228,9 +239,13 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
 microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()
 ```
+
 ```{r}
 chart$residuals(microp_glm2)
 ```
+
+
+
 ```{r}
 chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   geom_point() +
@@ -238,11 +253,8 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
 ```
 
 
-<!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
-
-
-
 ## Conclusion
+
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les modèles les plus pertinents que vous retenez ? -->
 
 ...vos conclusions ici...
@@ -250,5 +262,3 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
 ## Références
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
-
-
