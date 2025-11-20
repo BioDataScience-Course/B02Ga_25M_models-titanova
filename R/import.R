@@ -37,8 +37,8 @@ microp$temp_rec <- cut(microp$temp,
 # Etape 4 : Ajout des labels et des unités --------------------------------
 
 microp <- labelise (microp,
-  label = list(id = "Echantillon", day = "Date", temp = "Température", depth_rec ="Profondeur de l'océan", mesocosm ="Mésocosme", plast_tot = "[Microplastique]", plast_ps = "[polystyrène]", plast_pp = "[Polypropylène]", plast_pe = "[Polyéthylène théréphtalate]", plast_pvc = "[Chlorure de polyvinyle]", plast_pe = "[Polyéthylène]", ammonium = "[Ammonium]", hna ="Haute concentration d'acides nucléiques chez bactéries", lna ="Basse concentration d'acides nucléiques chez bactéries ", chla_fluo = "Masse phytoplancton", fvfm ="Efficacité de la photosynthèse"),
-  units = list(temp ="°C", depth ="m", plast_tot = "g.cm^-3", plast_ps = "g.cm^-3", plast_pp = "g.cm^-3", plast_pe = "g.cm^-3", plast_pvc = "g.cm^-3", plast_pe = "g.cm^-3", ammonium = "mg.m^-3", chla_fluo = "mg.m^-3" ))
+  label = list(id = "Echantillon", day = "Date", temp = "Température", depth = "Profondeur de l'océan", depth_rec ="Profondeur de l'océan ordonnée", mesocosm ="Mésocosme", plast_tot = "[Microplastique]", plast_ps = "[Polystyrène]", plast_pp = "[Polypropylène]", plast_pet = "[Polyéthylène théréphtalate]", plast_pvc = "[Chlorure de polyvinyle]", plast_pe = "[Polyéthylène]", ammonium = "[Ammonium]", hna ="Haute concentration d'acides nucléiques chez bactéries", lna ="Basse concentration d'acides nucléiques chez bactéries ", chla_fluo = "Masse phytoplancton", fvfm ="Efficacité de la photosynthèse", temp_rec = "Température ordonnée"),
+  units = list(temp ="°C", depth ="m", depth_rec = "m", plast_tot = "g.cm^-3", plast_ps = "g.cm^-3", plast_pp = "g.cm^-3", plast_pe = "g.cm^-3", plast_pvc = "g.cm^-3", plast_pe = "g.cm^-3", ammonium = "mg.m^-3", chla_fluo = "mg.m^-3", temp_rec= "°C"))
 
 # Etape 5 : Sauvegarde locale des données retravaillées -------------------
 write$rds(microp, "data/microp.rds")
