@@ -199,8 +199,7 @@ tabularise(summary_(microp_lm4.2))
 
 AIC(microp_lm4.1, microp_lm4.2)
 ```
-<<<<<<< HEAD
-=======
+
 ```{r}
 microp_lm4.3 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec)
 tabularise(summary_(microp_lm4.3)) 
@@ -210,7 +209,6 @@ AIC(microp_lm4.2, microp_lm4.3)
 anova(microp_lm4.2, microp_lm4.3)
 ```
 
->>>>>>> 584bb6b92a1021efbffde6fdc2e5f3850d679722
 
 ```{r}
 chart$residuals(microp_lm4.2)
