@@ -62,7 +62,7 @@ chart(data=microp, chla_fluo ~plast_pet %col=% temp)+
   geom_point()
 ```
 
-La concentration en microplastique totale augmente en fonction de la concentration en ammonium. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populations microbiennes ici étudiées.
+La masse en phytoplancton augmente en fonction de la concentration en polyéthylène théréphatalate. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populations microbiennes ici étudiées.
 
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 
@@ -241,11 +241,30 @@ L'étendue des résidus est élevée (0.2) par rapport à l'étendue des valeurs
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_glm2<- glm(data = microp,chla_fluo ~plast_pet + temp, family)
+microp_glm1<- glm(data = microp, chla_fluo ~ plast_pet * temp, family = gaussian) 
+summary_(microp_glm2) |> tabularise()
+
+microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
+summary_(microp_glm2) |> tabularise()
+
+anova(microp_glm1, microp_glm2, test = "Chisq") |> tabularise()
+
 ```
 
-<!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
+```{r}
+chart$residuals(microp_glm2)
+```
 
+
+
+```{r}
+chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
+```
+
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
+L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité  des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
 ## Conclusion
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les modèles les plus pertinents que vous retenez ? -->
