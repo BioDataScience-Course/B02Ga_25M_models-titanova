@@ -102,64 +102,54 @@ Ce graphique présente l'efficacité de la photosynthèse en fonction de la conc
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
 
 ```{r}
-lm(data=microp, fvfm ~ plast_tot + I(plast_tot)) -> microp_lm1_1
-chart(microp_lm1_1)
-lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1_2
-chart(microp_lm1_2)
-lm(data=microp, fvfm ~ plast_tot + I(plast_tot^3)) -> microp_lm1_3
-chart(microp_lm1_3)
+lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1
+chart(microp_lm1)
 ```
 
 ```{r}
-summary(microp_lm1_2) %>.%
+summary(microp_lm1) %>.%
   tabularise(.)
 ```
 
-```         
-```
-
 ```{r}
-chart$residuals(microp_lm1_2)
+chart$residuals(microp_lm1)
 ```
 
 $$
-`r eq__(microp_lm1_2, use_coefs = TRUE)`
+`r eq__(microp_lm1, use_coefs = TRUE)`
 $$
 
-L'ajustement du modèle d'ordre 2 est visuellement meilleur, nous le gardons pour les analyses. La mise en graphique du modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre ne montre pas une tendance linéaire mais plutot en parabole décroissante. Ce modèle a un R² ajusté assez faible et une p-value significative. Les p-valeurs de chaque paramètre sont aussi significatives. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
+La mise en graphique du modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre ne montre pas une tendance linéaire mais plutot en parabole décroissante. Ce modèle a un R² ajusté assez faible et une p-value significative. Les p-valeurs de chaque paramètre sont aussi significatives. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
 
 #### Régression linéaire 2
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
 
 ```{r}
-microp_lm2_1 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot))
-chart(microp_lm2_1)
-microp_lm2_2 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2))
-chart(microp_lm2_2)
-microp_lm2_3 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^3))
-chart(microp_lm2_3)
+microp_lm2 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2))
+chart(microp_lm2)
+
 ```
 
 ```{r}
-tabularise(summary_(microp_lm2_2))
+tabularise(summary_(microp_lm2))
 ```
 
 ```{r}
-chart$residuals(microp_lm2_2)
+chart$residuals(microp_lm2)
 ```
 
 $$
-`r eq__(microp_lm2_2, use_coefs = TRUE)`
+`r eq__(microp_lm2, use_coefs = TRUE)`
 $$
 
-L'ajustement du modèle d'ordre 2 est visuellement meilleur, nous le gardons  donc pour les analyses. Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alpha de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
+Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alphe de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
 
 #### Modèle linéaire 1
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
-```{r}
+```{r étude/comparaison modèle linéaire1}
 lm(data = microp, fvfm ~ plast_pvc * depth_rec)-> microp_lm3.1
 summary(microp_lm3.1) %>.%
 tabularise(.)
@@ -170,13 +160,13 @@ anova(microp_lm3.1, microp_lm3.2)
 ```
 
 
-```{r}
+```{r graphique modèle linéaire1}
 chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-```{r}
+```{r analyse résidus1}
 chart$residuals(microp_lm3)
 ```
 
@@ -184,31 +174,31 @@ $$
 `r eq__(microp_lm3, use_coefs = TRUE)`
 $$
 
-Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple. Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
+Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple.
+Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 #### Modèle linéaire 2
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
-```{r étude des modèles}
-microp_lm4.1 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec + 0)
-tabularise(summary_(microp_lm4.1))
-microp_lm4.2 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
-tabularise(summary_(microp_lm4.2))
-microp_lm4.3 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec)
-tabularise(summary_(microp_lm4.3))
+```{r}
+microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec + plast_pe:temp_rec + 0)
+
+tabularise(summary_(microp_lm4))  
 ```
-
-```{r comparaison des modèles}
-anova(microp_lm4.1, microp_lm4.2) |> tabularise()
-anova(microp_lm4.2, microp_lm4.3) |> tabularise()
-AIC(microp_lm4.1, microp_lm4.2)
-```
-
-
 
 ```{r}
-chart$residuals(microp_lm4.2)
+microp_lm5 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
+tabularise(summary_(microp_lm5)) 
+```
+
+```{r}
+
+AIC(microp_lm4, microp_lm5)
+```
+
+```{r}
+chart$residuals(microp_lm5)
 ```
 
 ```{r}
@@ -218,10 +208,11 @@ chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
 ```
 
 $$
-`r eq__(microp_lm4.2, use_coefs = TRUE)`
+`r eq__(microp_lm4, use_coefs = TRUE)`
 $$
 
-Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fonction de la concentration en polyéthylène téréphtalate est différentes en fonction de la température. Le modèle est significatif au seuil alpha de 5%. Le R2 est mauvais avec une valeur de 0,0.3508. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.Le modèle n'est pas forcé à passer par l'ordonnée à l'origine pour les données ayant été pris à une température entre 21 et 23.5°C. Le modèle forcé à o ne simplifie pas (c est le même que celui non forcé à 0 probablement du à un bug de la fonction lm).
+Pour le choix du modèle
+Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fonction de la concentration en polyéthylène téréphtalate est différentes en fonction de la température. Le modèle est significatif au seuil alpha de 5%. Le R2 est mauvais avec une valeur de 0,0.3508. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.Le modèle n'est pas forcé à passer par l'ordonnée à l'origine pour les données ayant été pris à une température entre 21 et 23.5°C. 
 
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Les données suivent une distribution normale (B). La répartition des données ne montre pas un signe d'homoscédasticité (C), de nombreuses valeurs sont présentes en un même point. Il y a présence de quelques valeurs extrêmes (D). Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse surtout à cause de la répartition des données.
 
@@ -230,19 +221,8 @@ L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_glm <- glm(data = microp, fvfm ~ ammonium * mesocosm, family = gaussian)
+microp_glm <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
 summary_(microp_glm) |> tabularise()
-```
-
-```{r}
-microp_glmb <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
-summary_(microp_glmb) |> tabularise() 
-
-```
-
-```{r}
-AIC(microp_glm,microp_glmb)
-anova (microp_glm,microp_glmb, test = "F") |> tabularise()
 ```
 
 ```{r}
@@ -261,8 +241,6 @@ $$
 $$
 
 Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé.
-
-l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une non normalité mais la distribution est symétrique (en forme de S) (B). L'analyse des variances montre relativement une homoscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cookds est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
 
 #### Modèle linéaire généralisé et/ou mixte 2
 
@@ -289,7 +267,10 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé. L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
+
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). 
+Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
+L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité  des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
 
 ## Conclusion
 
