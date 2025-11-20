@@ -255,6 +255,7 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%.
 
 ## Conclusion
 
