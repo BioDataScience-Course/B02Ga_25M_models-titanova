@@ -194,7 +194,7 @@ $$
 `r eq__(microp_lm4, use_coefs = TRUE)`
 $$
 
-Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fonction de la concentration en polyéthylène téréphtalate est différentes en fonction de la température. Le modèle est significatif au seuil alpha de 5%. Le R2 est bon avec une valeur de 0,8674. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.Le modèle est forcé à passer par l'ordonnée à l'origine pour les données ayant été pris à une température entre 21 et 23.5°C.\
+Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fonction de la concentration en polyéthylène téréphtalate est différentes en fonction de la température. Le modèle est significatif au seuil alpha de 5%. Le R2 est bon avec une valeur de 0,8674. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.Le modèle n'est pas forcé à passer par l'ordonnée à l'origine pour les données ayant été pris à une température entre 21 et 23.5°C.\
 175
 
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Les données suivent une distribution normale (B). La répartition des données ne montre pas un signe d'homoscédasticité (C), de nombreuses valeurs sont présentes en un même point. Il y a présence de quelques valeurs extrêmes (D). Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse surtout à cause de la répartition des données.
@@ -208,7 +208,6 @@ microp_glm <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
 summary_(microp_glm) |> tabularise()
 ```
 
-
 ```{r}
 chart$residuals(microp_glm) 
 
@@ -220,17 +219,13 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-<<<<<<< HEAD
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pa très bon.
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon.
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
-=======
->>>>>>> 7df9a7d4b993924bf3bc8ed6a45bc6e72f844edc
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
-```{r}
-microp_glm2<-
-## Conclusion
+
+\`\`\`{r} microp_glm2\<- \## Conclusion
 
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les modèles les plus pertinents que vous retenez ? -->
 
