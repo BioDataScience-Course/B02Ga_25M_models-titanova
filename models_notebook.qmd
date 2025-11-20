@@ -78,7 +78,7 @@ Le nuage de point montre une tendance qui s'apparente à une droite. Cependant l
 <!--% Graphique et interprétation de l'étudiant #3 ci-dessous. -->
 
 ```{r chart3}
-chart(data=microp, chla_fluo ~plast_tot )+
+chart(data=microp, chla_fluo ~plast_tot %col=% temp_rec)+
   geom_point()
 ```
 
