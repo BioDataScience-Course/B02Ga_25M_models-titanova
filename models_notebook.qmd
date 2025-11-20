@@ -218,6 +218,9 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
+$$
+`r eq__(microp_glm,use_coefs = TRUE)`
+$$
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
