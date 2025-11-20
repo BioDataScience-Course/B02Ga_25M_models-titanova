@@ -20,6 +20,8 @@ bibliography: references.bib
 
 <!--% Rédigez le but de ce rapport en 2 phrases.-->
 
+Le but de ce rapport est d'évaluer l’impact des micro-plastiques et de facteurs abiotiques (température, ammonium...) sur les populations phytoplanctoniques et bactériennes. Cette population est à la base de la chaîne trophique marine d’où l'importance de cet étude.
+
 ## Matériel et méthodes
 
 <!--% Cette section doit comprendre deux parties. La première partie doit expliciter les données employées et la seconde traiter des analyses réalisées et des logiciels employés.-->
