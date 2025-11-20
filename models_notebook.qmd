@@ -175,14 +175,14 @@ chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
 ```
 
 ```{r}
-chart$residuals(microp_lm3.1)
+chart$residuals(microp_lm3.2)
 ```
 
 $$
-`r eq__(microp_lm3.1, use_coefs = TRUE)`
+`r eq__(microp_lm3.2, use_coefs = TRUE)`
 $$
 
-Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple. Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
+Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple. Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus n'est pas bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 #### Modèle linéaire 2
 
@@ -256,7 +256,7 @@ $$
 `r eq__(microp_glm2, use_coefs = TRUE)`
 $$
 
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Malgré un AIC légèrement moins favorable, le modèle avec interactions est meilleur car le modèle sans interaction n'est pas significatif.
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosme et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Malgré un AIC légèrement moins favorable, le modèle avec interactions est meilleur car le modèle sans interaction n'est pas significatif.
 
 l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une homoscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cookds est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
 
