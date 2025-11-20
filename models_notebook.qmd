@@ -234,6 +234,8 @@ $$
 
 Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé.
 
+L'étendue des résidus est élevée (0.2) par rapport à l'étendue des valeurs prédites(0.15). La courbe du nuage de point est relativement non linéaire (A). Les résidus ne suivent pas une distribution normale (B) mais la distribution est symétrique (forme de S). La répartition des résidus montre relativement une homoscédasticité (C), une valeur extrême est observable. Il y a présence de quelques valeurs extrêmes, un effet de levier est observé, la distance Cooksd est importante (D). Après analyse des résidus, le modèle généralisé semble robuste pour modéliser nos données. 
+
 #### Modèle linéaire généralisé et/ou mixte 2
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
