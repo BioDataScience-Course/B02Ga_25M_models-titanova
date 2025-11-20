@@ -227,6 +227,7 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
+
 $$
 `r eq__(microp_glm, use_coefs = TRUE)`
 $$
@@ -252,14 +253,11 @@ anova(microp_glm1, microp_glm2, test = "Chisq") |> tabularise()
 chart$residuals(microp_glm2)
 ```
 
-
-
 ```{r}
 chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
-
 
 ## Conclusion
 
