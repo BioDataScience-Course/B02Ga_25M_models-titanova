@@ -202,11 +202,22 @@ L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs
 #### Modèle linéaire généralisé et/ou mixte 1
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
+
 ```{r}
 microp_glm <- glm(data = microp, fvfm ~ ammonium, family = gaussian)
 summary_(microp_glm) |> tabularise()
 ```
 
+```{r}
+chart$residuals(microp_glm) 
+
+```
+
+```{r}
+chart(data = microp, fvfm ~ ammonium, family) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
+```
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
