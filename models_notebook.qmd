@@ -240,7 +240,7 @@ Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre d
 
 ```{r}
 microp_glm1<- glm(data = microp, chla_fluo ~ plast_pet * temp, family = gaussian) 
-summary_(microp_glm2) |> tabularise()
+summary_(microp_glm1) |> tabularise()
 
 microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()
@@ -261,7 +261,8 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). 
+Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
 L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité  des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
 ## Conclusion
 
