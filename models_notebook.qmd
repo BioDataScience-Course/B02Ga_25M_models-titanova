@@ -176,7 +176,8 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec -1 )
+microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec + plast_pe:temp_rec + 0)
+
 tabularise(summary_(microp_lm4))  
 ```
 
