@@ -256,9 +256,9 @@ $$
 `r eq__(microp_glm2, use_coefs = TRUE)`
 $$
 
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Malgré un AIC légèrement moins favorable, le modèle avec interactions est meilleur car le modèle sans interaction n'est pas significatif.
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Le modèle avec interaction n'a pas de variable significative, le modèle sans intéraction est donc privilégié.
 
-l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une homoscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cookds est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
+l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une hétéroscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cooks est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
