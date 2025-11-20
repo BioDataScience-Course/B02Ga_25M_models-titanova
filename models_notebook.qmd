@@ -222,15 +222,21 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
 
 #### Modèle linéaire généralisé et/ou mixte 2
 
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pa très bon.
-
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_glm2<- glm(data = microp,chla_fluo ~plast_pet + temp, family)
+microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
+summary_(microp_glm2) |> tabularise()
+```
+```{r}
+chart$residuals(microp_glm2)
+```
+```{r}
+chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon.
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
