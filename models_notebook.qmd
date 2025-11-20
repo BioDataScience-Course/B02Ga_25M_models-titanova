@@ -93,7 +93,6 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm)+
 
 Ce graphique présente l'efficacité de la photosynthèse en fonction de la concentration de l'ammonium dans les différents mésocosme. L'efficacité photosynthétique est très élevée pour des très faible concentration de l'ammonium. Cette dernière semble ne pas impacter sur l'efficacité photosynthétique. L'efficacité la plus élevée est observée dans le mésocosme 5 à 5,5.
 
-
 ### Modélisation
 
 <!--% Chaque modèle doit être décrit à l'aide d'un graphique et d'un tableau résumant le modèle. Les équations paramétrées de tous les modèles doivent être également présentes. L'analyse des résidus sera réalisée et interprétée pour chaque modèle. -->
@@ -177,7 +176,7 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec +0 )
+microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec )
 tabularise(summary_(microp_lm4))
 ```
 
@@ -191,7 +190,6 @@ chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-
 $$
 `r eq__(microp_lm4, use_coefs = TRUE)`
 $$
@@ -200,7 +198,6 @@ Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fo
 175
 
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Les données suivent une distribution normale (B). La répartition des données ne montre pas un signe d'homoscédasticité (C), de nombreuses valeurs sont présentes en un même point. Il y a présence de quelques valeurs extrêmes (D). Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse surtout à cause de la répartition des données.
-
 
 #### Modèle linéaire généralisé et/ou mixte 1
 
