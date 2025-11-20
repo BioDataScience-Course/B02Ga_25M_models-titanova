@@ -153,7 +153,7 @@ $$
 `r eq__(microp_lm2_2, use_coefs = TRUE)`
 $$
 
-L'ajustement du modèle d'ordre 2 est visuellement meilleur, nous le gardons  donc pour les analyses. Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alpha de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
+L'ajustement du modèle d'ordre 2 est visuellement meilleur, nous le gardons donc pour les analyses. Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alpha de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
 
 #### Modèle linéaire 1
 
@@ -168,7 +168,6 @@ summary(microp_lm3.2) %>.%
 tabularise(.)
 anova(microp_lm3.1, microp_lm3.2)
 ```
-
 
 ```{r}
 chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
@@ -204,8 +203,6 @@ anova(microp_lm4.1, microp_lm4.2) |> tabularise()
 anova(microp_lm4.2, microp_lm4.3) |> tabularise()
 AIC(microp_lm4.1, microp_lm4.2)
 ```
-
-
 
 ```{r}
 chart$residuals(microp_lm4.2)
