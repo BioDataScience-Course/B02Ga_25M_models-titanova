@@ -182,23 +182,32 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_lm4 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec + plast_pe:temp_rec + 0)
+microp_lm4.1 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec + 0)
 
-tabularise(summary_(microp_lm4))  
+tabularise(summary_(microp_lm4.1))  
 ```
 
 ```{r}
-microp_lm5 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
-tabularise(summary_(microp_lm5)) 
+microp_lm4.2 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
+tabularise(summary_(microp_lm4.2)) 
 ```
 
 ```{r}
 
-AIC(microp_lm4, microp_lm5)
+AIC(microp_lm4.1, microp_lm4.2)
+```
+```{r}
+microp_lm4.3 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec)
+tabularise(summary_(microp_lm4.3)) 
+```
+```{r}
+AIC(microp_lm4.2, microp_lm4.3)
+anova(microp_lm4.2, microp_lm4.3)
 ```
 
+
 ```{r}
-chart$residuals(microp_lm5)
+chart$residuals(microp_lm4.2)
 ```
 
 ```{r}
@@ -208,10 +217,10 @@ chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
 ```
 
 $$
-`r eq__(microp_lm4, use_coefs = TRUE)`
+`r eq__(microp_lm4.2, use_coefs = TRUE)`
 $$
 
-Pour le choix du modèle
+Pour le choix du modèle, différentes propositions ont été analysées. Le test choisi est celui avec interaction car le test anova nous montre qu'il y a significativement une différence entre les modèles avec et sans interaction. Nous avons essayé de déterminer s'il est possible de forcer à l'ordonnée à l'origine, les tests n'étant pas concluant, nous avons décidé de conserver le modèle le plus complexe.
 Le graphique semble indiquer que l'évolution de la masse de phytoplancton en fonction de la concentration en polyéthylène téréphtalate est différentes en fonction de la température. Le modèle est significatif au seuil alpha de 5%. Le R2 est mauvais avec une valeur de 0,0.3508. Toutes les termes sont significatifs de 5%. Cela signifie que la pente et l'ordonnée à l'origine sont différentes au seuil alpha de 5%. Il y a donc une différence significative de l'évolution de la masse de Phytoplancton en fonction de la température.Le modèle n'est pas forcé à passer par l'ordonnée à l'origine pour les données ayant été pris à une température entre 21 et 23.5°C. 
 
 L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs prédites(2.0). La courbe du nuage de point est relativement linéaire mais de nombreux points sont positionnés au même niveau (A). Les données suivent une distribution normale (B). La répartition des données ne montre pas un signe d'homoscédasticité (C), de nombreuses valeurs sont présentes en un même point. Il y a présence de quelques valeurs extrêmes (D). Après analyse des résidus, le modèle semble moins idéal qu'il l'était avant l'analyse surtout à cause de la répartition des données.
