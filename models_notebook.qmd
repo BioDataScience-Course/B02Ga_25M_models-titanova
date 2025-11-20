@@ -101,17 +101,21 @@ Ce graphique présente l'efficacité de la photosynthèse en fonction de la conc
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
 
-```{r}
-lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1
+```{r étude et comparaison des modèles}
+lm(data=microp, fvfm ~ plast_tot) -> microp_lm1.1
+chart(microp_lm1)
+lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1.2
+chart(microp_lm1)
+lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2) + I(plast_tot^3)) -> microp_lm1.3
 chart(microp_lm1)
 ```
 
-```{r}
+```{r représentation du modèle}
 summary(microp_lm1) %>.%
   tabularise(.)
 ```
 
-```{r}
+```{r analyse des résidus}
 chart$residuals(microp_lm1)
 ```
 
@@ -119,23 +123,26 @@ $$
 `r eq__(microp_lm1, use_coefs = TRUE)`
 $$
 
-La mise en graphique du modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre ne montre pas une tendance linéaire mais plutot en parabole décroissante. Ce modèle a un R² ajusté assez faible et une p-value significative. Les p-valeurs de chaque paramètre sont aussi significatives. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
+L'ajustement du modèle d'ordre 2 est visiblement meilleur, nous le gardons donc pour les analyses. La mise en graphique du modèle de l'efficacité de la concentration en microplastiques en fonction de l'efficacité de la photosynthèse du deuxième ordre ne montre pas une tendance linéaire mais plutot en parabole décroissante. Ce modèle a un R² ajusté assez faible et une p-value significative. Les p-valeurs de chaque paramètre sont aussi significatives. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
 
 #### Régression linéaire 2
 
 <!--% Ajustez une régression linéaire simple, multiple ou polynomiale par paire d'étudiants dans cette section (donc, deux modèles pour l'équipe de quatre). -->
 
-```{r}
-microp_lm2 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2))
+```{r étude et comparaison des modèles}
+microp_lm2.1<- lm(data= microp,  chla_fluo ~plast_tot)
 chart(microp_lm2)
-
+microp_lm2.2 <- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2))
+chart(microp_lm2)
+microp_lm2.3<- lm(data= microp,  chla_fluo ~plast_tot + I(plast_tot^2) + I(plast_tot^3))
+chart(microp_lm2)
 ```
 
-```{r}
+```{r représentation du modèle}
 tabularise(summary_(microp_lm2))
 ```
 
-```{r}
+```{r graphique des résidus}
 chart$residuals(microp_lm2)
 ```
 
@@ -143,13 +150,13 @@ $$
 `r eq__(microp_lm2, use_coefs = TRUE)`
 $$
 
-Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alphe de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
+L'ajustement du modèle d'ordre 2 est visiblement meilleur, nous le gardons donc pour les analyses.Le modèle est significatif au seuil alpha de 5%. Par contre, la variable alpha n'est pas significative au seuil alphe de 5% . Avec un R\^2 ajusté de 0.4938, le modèle est moyennement bon (plus celui sera proche de 1 , plus le modèle sera bon). L'intervalle de confiance est large est contient plus ou moins la moitié des valeurs. On observe plusieurs valeurs extrêmes. Les graphiques d'analyses de résidus nous montrent très clairement que le modèle laisse a désirer. En effet, le graphique A nous montre que les résidus sont assez fortement élevé par rapport aux valeurs prédites ( certains résidus valent plus de la moitié des valeurs prédites et que la courbe n est pas très bien alignée dans le nuage de point. Le graphique B nous montre que les résidus sont raisonnablement proche d'une distribution normale. Le graphique C montre une hétéroscédasticité flagrante (donc une non homogénéité des variances) . Le dernier graphique nous indique la présence d'une valeur avec un effet de levier important.
 
 #### Modèle linéaire 1
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
-```{r étude/comparaison modèle linéaire1}
+```{r étude et comparaison des modèles}
 lm(data = microp, fvfm ~ plast_pvc * depth_rec)-> microp_lm3.1
 summary(microp_lm3.1) %>.%
 tabularise(.)
@@ -160,13 +167,13 @@ anova(microp_lm3.1, microp_lm3.2)
 ```
 
 
-```{r graphique modèle linéaire1}
+```{r graphique}
 chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-```{r analyse résidus1}
+```{r analyse résidus}
 chart$residuals(microp_lm3)
 ```
 
@@ -181,36 +188,35 @@ Le modèle de l'efficacité de la photosynthèse en fonction de de la concentrat
 
 <!--% Construisez un modèle linéaire par paire d'étudiants dans cette section. -->
 
-```{r}
+```{r étude des modèles}
 microp_lm4.1 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec + 0)
+tabularise(summary_(microp_lm4.1)) 
 
-tabularise(summary_(microp_lm4.1))  
-```
-
-```{r}
 microp_lm4.2 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
 tabularise(summary_(microp_lm4.2)) 
-```
 
-```{r}
+microp_lm4.3 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec)
+tabularise(summary_(microp_lm4.3))
+```
+ 
+
+```{r comparaison des modèles 1 et 2}
 
 AIC(microp_lm4.1, microp_lm4.2)
 ```
-```{r}
-microp_lm4.3 <- lm(data= microp, chla_fluo ~ plast_pe + temp_rec)
-tabularise(summary_(microp_lm4.3)) 
-```
-```{r}
+
+
+```{r comparaison des modèles 2 et 3}
 AIC(microp_lm4.2, microp_lm4.3)
 anova(microp_lm4.2, microp_lm4.3)
 ```
 
 
-```{r}
+```{r analyse des résidus}
 chart$residuals(microp_lm4.2)
 ```
 
-```{r}
+```{r graphique}
 chart(data = microp, chla_fluo ~ plast_pe %col=% temp_rec) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
@@ -229,17 +235,24 @@ L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
-```{r}
-microp_glm <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
+```{r étude des modèles}
+microp_glm1 <- glm(data = microp, fvfm ~ ammonium * mesocosm, family = gaussian)
+summary_(microp_glm) |> tabularise()
+microp_glm2 <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
 summary_(microp_glm) |> tabularise()
 ```
 
-```{r}
+```{r comparaison des modèles}
+anova(microp_glm1, microp_glm2)
+```
+
+
+```{r analyse des résidus}
 chart$residuals(microp_glm) 
 
 ```
 
-```{r}
+```{r graphique}
 chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
@@ -255,7 +268,7 @@ Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre d
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
-```{r}
+```{r étude et comparaison des modèles}
 microp_glm1<- glm(data = microp, chla_fluo ~ plast_pet * temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()
 
@@ -266,11 +279,11 @@ anova(microp_glm1, microp_glm2, test = "Chisq") |> tabularise()
 
 ```
 
-```{r}
+```{r analyse des résidus}
 chart$residuals(microp_glm2)
 ```
 
-```{r}
+```{r graphique}
 chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   geom_point() +
   stat_smooth(method = "lm", formula = y ~ x)
