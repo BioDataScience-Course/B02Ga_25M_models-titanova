@@ -245,6 +245,8 @@ summary_(microp_glm2) |> tabularise()
 microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()
 
+anova(microp_glm1, microp_glm2, test = "Chisq") |> tabularise()
+
 ```
 
 ```{r}
