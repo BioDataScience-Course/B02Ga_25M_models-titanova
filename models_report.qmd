@@ -1,6 +1,6 @@
 ---
-title: "___"
-author: "___, ___, ___, ___"
+title: "Impact du microplastique sur les communautés microbiennes"
+author: "Irma Gaziaux, Lila Franchin, Arthur Miroux, Kelly Fodom"
 format:
   pdf:
     documentclass: report
