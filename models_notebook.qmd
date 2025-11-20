@@ -219,14 +219,27 @@ chart(data = microp, fvfm ~ ammonium %col=% mesocosm) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
+
 Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé.
 
-<!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
+
+#### Modèle linéaire généralisé et/ou mixte 2
+
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pa très bon.
 
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
-\`\`\`{r} microp_glm2\<- \## Conclusion
+```{r}
+microp_glm2<- glm(data = microp,chla_fluo ~plast_pet + temp, family)
+```
 
+
+
+<!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
+
+
+
+## Conclusion
 <!--% Lorsque toutes les analyses sont réalisées, terminez ce bloc-notes avec 3 à 6 phrases de conclusion en rapport avec ce que vous avez observé dans vos analyses. Quels sont les modèles les plus pertinents que vous retenez ? -->
 
 ...vos conclusions ici...
@@ -234,3 +247,5 @@ Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre d
 ## Références
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
+
+
