@@ -181,6 +181,16 @@ tabularise(summary_(microp_lm4))
 ```
 
 ```{r}
+microp_lm5 <- lm(data= microp, chla_fluo ~ plast_pe * temp_rec)
+tabularise(summary_(microp_lm5)) 
+```
+```{r}
+anova(microp_lm4, microp_lm5, test = "F") |> tabularise()
+AIC(microp_lm4, microp_lm5)
+```
+
+
+```{r}
 chart$residuals(microp_lm4)
 ```
 
