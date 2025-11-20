@@ -110,6 +110,9 @@ chart(microp_lm1)
 summary(microp_lm1) %>.%
   tabularise(.)
 ```
+```
+```
+
 
 ```{r}
 chart$residuals(microp_lm1)
@@ -214,9 +217,21 @@ L'étendue des résidus est élevée (2.5) par rapport à l'étendue des valeurs
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
 ```{r}
-microp_glm <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
+microp_glm <- glm(data = microp, fvfm ~ ammonium * mesocosm, family = gaussian)
 summary_(microp_glm) |> tabularise()
 ```
+
+```{r}
+microp_glmb <- glm(data = microp, fvfm ~ ammonium + mesocosm, family = gaussian)
+summary_(microp_glmb) |> tabularise() 
+
+```
+
+```{r}
+AIC(microp_glm,microp_glmb)
+anova (microp_glm,microp_glmb, test = "F") |> tabularise()
+```
+
 
 ```{r}
 chart$residuals(microp_glm) 
