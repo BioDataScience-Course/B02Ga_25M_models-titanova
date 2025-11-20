@@ -27,7 +27,7 @@ Les données viennent de l'étude expérimentale de Montaya et al. [-@Montoya202
 
 <!--% Indiquez ici d'où viennent les données et aussi quel logiciel (et version) vous utilisez pour les analyses. Inspirez-vous des projets du premier module de SDD II. -->
 
-Les données de cette étude proviennent du dépot Zenodo de @Montoya2023 . Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).e
+Les données de cette étude proviennent du dépot Zenodo de @Montoya2023 . Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
 
 ## Analyses
 
