@@ -114,9 +114,9 @@ chart(microp_lm1_3)
 summary(microp_lm1_2) %>.%
   tabularise(.)
 ```
-```
-```
 
+```         
+```
 
 ```{r}
 chart$residuals(microp_lm1_2)
@@ -183,8 +183,7 @@ $$
 `r eq__(microp_lm3, use_coefs = TRUE)`
 $$
 
-Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple.
-Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
+Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple. Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 #### Modèle linéaire 2
 
@@ -245,7 +244,6 @@ AIC(microp_glm,microp_glmb)
 anova (microp_glm,microp_glmb, test = "F") |> tabularise()
 ```
 
-
 ```{r}
 chart$residuals(microp_glm) 
 
@@ -290,10 +288,7 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-
-Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). 
-Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
-L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité  des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé. L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
 
 ## Conclusion
 
