@@ -43,4 +43,3 @@ microp <- labelise (microp,
 # Etape 5 : Sauvegarde locale des données retravaillées -------------------
 write$rds(microp, "data/microp.rds")
 rm(microp)
-
