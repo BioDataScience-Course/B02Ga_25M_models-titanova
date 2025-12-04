@@ -16,7 +16,7 @@ bibliography: references.bib
 
 <!--% Rédigez l'introduction de ce rapport en 5-6 phrases.-->
 
-Dans cette analyse statistique, nous étudions l'effet des microplastiques sur la communauté microbienne marine.. Les microplastiques peuvent avoir un effet négatif sur plusieurs paramètres comme la croissance, le contenu en chlorophylle, l'activité photosynthétique,...(Raju, 2022) Ici nous étudions l'effet des microplastiques sur la biomasse, la proportion en HNA/LNA, la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types
+Dans cette analyse statistique, nous étudions l'effet des microplastiques sur la communauté microbienne marine. Les microplastiques peuvent avoir un effet négatif sur plusieurs paramètres comme la croissance, le contenu en chlorophylle, l'activité photosynthétique,... [@wright2013physical] Ici nous étudions l'effet des microplastiques sur la biomasse, la proportion en HNA/LNA, la concentration en ammonium et le taux de chlorophylle et l'absence ou la présence de certains microplastiques de différents types [@Montoya2024].
 
 <!--% Rédigez le but de ce rapport en 2 phrases.-->
 
@@ -57,14 +57,13 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-param}
+$$ {#eq-param}
 
 L'\@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
 
 ```{r fig-resid}
 chart$residuals(microp_lm1.2)
 ```
-
 
 #### Modèle linéaire 1
 
