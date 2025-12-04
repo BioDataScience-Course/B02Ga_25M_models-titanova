@@ -34,6 +34,41 @@ Le logiciel utilisé est R (version 4.4.1) (<https://www.r-project.org)> (`r R.v
 
 <!--% Présentez les deux modèles les plus pertinents que vous avez sélectionnés. Structurez la section en deux parties avec deux titres de niveau trois.-->
 
+#### Régression linéaire 1
+
+```{r}
+lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1.2
+```
+
+Une modèle basé sur une équation polynomiale d'ordre 2 non forcé à l'origine (\@eq_poly0) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de plastique totale $plast_tot$ {#eq-poly1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant {\@fig-chart}.
+
+```{r}
+summary(microp_lm1.2) %>.%
+  tabularise(.)
+```
+
+Les paramètres du modèle polynomial d'ordre 2 sont ajustés dans les données de l'impact du microplastique sur la croissance des populations phytoplanctonniques.
+
+$$
+`r eq__(microp_lm1.2, use_coefs = TRUE)`
+$${#eq-poly1}
+
+```{r fig-chart}
+chart(microp_lm1.2)
+```
+
+#### Modèle linéaire 1
+
+```{r}
+lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3.2
+summary(microp_lm3.2) %>.%
+tabularise(.)
+```
+
+```{r}
+
+```
+
 ## Discussion et Conclusion
 
 <!--% En tenant compte du but de votre carnet de notes et de vos résultats, discutez de résultats et proposez des conclusions à votre analyse en 5 à 10 phrases. -->
