@@ -118,7 +118,6 @@ summary(microp_lm1.2) %>.%
   tabularise(.)
 ```
 
-
 ```{r}
 chart$residuals(microp_lm1.2)
 ```
