@@ -260,11 +260,13 @@ Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre d
 
 l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une hétéroscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cooks est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
 
+#### Modèle linéaire généralisé et/ou mixte 2
+
 <!--% Élaborez un modèle linéaire généralisé ou mixte par paire d'étudiants dans cette section. -->
 
 ```{r}
 microp_glm1<- glm(data = microp, chla_fluo ~ plast_pet * temp, family = gaussian) 
-summary_(microp_glm2) |> tabularise()
+summary_(microp_glm1) |> tabularise()
 
 microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()
