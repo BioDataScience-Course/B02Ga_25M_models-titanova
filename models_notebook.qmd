@@ -110,9 +110,9 @@ chart(microp_lm1)
 summary(microp_lm1) %>.%
   tabularise(.)
 ```
-```
-```
 
+```         
+```
 
 ```{r}
 chart$residuals(microp_lm1)
@@ -236,7 +236,6 @@ AIC(microp_glm,microp_glmb)
 anova (microp_glm,microp_glmb, test = "F") |> tabularise()
 ```
 
-
 ```{r}
 chart$residuals(microp_glm) 
 
@@ -252,11 +251,9 @@ $$
 `r eq__(microp_glm, use_coefs = TRUE)`
 $$
 
-
 Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosme et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Malgré un AIC légèrement moins favorable, le modèle avec interactions est meilleur car le modèle sans interaction n'est pas significatif.
 
 l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une hétéroscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cooks est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
-
 
 #### Modèle linéaire généralisé et/ou mixte 2
 
@@ -283,10 +280,7 @@ chart(data = microp, chla_fluo ~ plast_pet %col=% temp) +
   stat_smooth(method = "lm", formula = y ~ x)
 ```
 
-
-Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). 
-Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé.
-L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité  des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
+Tous les paramètres de l'équation sont significativement différents de 0 au seuil alpha de 5% pour le modèle sans interaction. Le modèle avec interaction donne des paramètres non significatif au seuil alpha de 5%. Le modèle avec interaction (le plus complexe) a un AIC un peu plus faible (73.92 par rapport à 73.07). Pour déterminer quel modèle utiliser, une anova a été faite. Il n'y a significativement pas de différence au seuil alpha de 5% entre les deux modèles. Comme plusieurs variables sont non significatives avec le modèle le plus complexe, nous préférons choisir le modèle qui a un AIC un peu plus élevé (le plus simple). Le graphique représenté signale que les données sont relativement mal représentées par le modèle. L'intervalle de confiance du graphique étant élevé. L'analyse des résidus montre que le modèle possède plusieurs problèmes. L'étalement des résidus (2.5) est élevé par rapport à l'étalement des valeurs prédites (2.5) (A). Il n'y a pas de normalité des résidus (B). Il n'y a pas d'homoscédasticité des résidus (C). Il y a de plus présence de valeurs extrêmes avec des effets de levier et des distances de Cook élevées (D).
 
 ## Conclusion
 
