@@ -44,20 +44,26 @@ lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1.2
 
 Une modèle basé sur une équation polynomiale d'ordre 2 non forcé à l'origine (\@eq_poly0) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de plastique totale $plast_tot$ {#eq-poly1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant {\@fig-chart}.
 
-```{r}
+```{r tbl-coefs}
 summary(microp_lm1.2) %>.%
   tabularise(.)
 ```
 
-Les paramètres du modèle polynomial d'ordre 2 sont ajustés dans les données de l'impact du microplastique sur la croissance des populations phytoplanctonniques.
+Les paramètres du modèle polynomial d'ordre 2 sont ajustés dans les données de l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes. Les trois paramètres sont significativement différents de zéro au seuil $/alpha$ de 1%.
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-poly1}
+$$ {#eq-poly1}
 
 ```{r fig-chart}
 chart(microp_lm1.2)
 ```
+
+Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux données de l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes. Le modèle est la courbe bleue et l'enveloppe de confiance à 95% du modèle est de coloration grise. De nombreuses observations sont observables autour du modèle. L'enveloppe du modèle est grande. Ce modèle ne représente pas le modèle de façon idéale.
+
+$$
+`r eq__(microp_lm1.2, use_coefs = TRUE)`
+$${#eq-poly1}
 
 #### Modèle linéaire 1
 
