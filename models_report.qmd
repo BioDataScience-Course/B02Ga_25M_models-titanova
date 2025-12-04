@@ -51,10 +51,6 @@ summary(microp_lm1.2) %>.%
 
 Les paramètres du modèle polynomial d'ordre 2 sont ajustés dans les données de l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes. Les trois paramètres sont significativement différents de zéro au seuil $/alpha$ de 1%.
 
-$$
-`r eq__(microp_lm1.2, use_coefs = TRUE)`
-$$ {#eq-poly1}
-
 ```{r fig-chart}
 chart(microp_lm1.2)
 ```
@@ -63,7 +59,13 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-poly1}
+$${#eq-param}
+
+L'\@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
+
+```{r fig-resid}
+chart$residuals(microp_lm1.2)
+```
 
 #### Modèle linéaire 1
 
