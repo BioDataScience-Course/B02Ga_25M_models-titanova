@@ -57,7 +57,7 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$$ {eq-param}
+$$ {#eq-param}
 
 L'@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
 
@@ -73,7 +73,7 @@ L'analyse des résidus (@fig-resid) est représentée par le graphique @fig-resi
 lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3.2
 ```
 
-Un modèle linéaire ne prenant pas en compte les interactions (\@eq_param1) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de Chlorure de polyvinyle $plast_pvc$ {#eq-param1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant \@fig-chart1.Les statistiques des différents paramètres $\plast_tot$ et $\plast_tot^2$ sont dans le \@tbl-coefs1. L'analyse des résidus est effectuée \@fig-resid1.
+Un modèle linéaire ne prenant pas en compte les interactions (\@eq_param1) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de Chlorure de polyvinyle $plast_pvc$ {#eq-param1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant \@fig-chart1.Les statistiques des différents paramètres $plast_tot$ et $plast_tot^2$ sont dans le \@tbl-coefs1. L'analyse des résidus est effectuée \@fig-resid1.
 
 ```{r tbl-coefs1}
 summary(microp_lm3.2)%>.%
