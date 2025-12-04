@@ -40,7 +40,7 @@ Le logiciel utilisé est R (version 4.4.1) (<https://www.r-project.org)> (`r R.v
 lm(data=microp, fvfm ~ plast_tot + I(plast_tot^2)) -> microp_lm1.2
 ```
 
-Une modèle basé sur une équation polynomiale d'ordre 2 non forcé à l'origine (\@eq_poly0) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de plastique totale $plast_tot$ {#eq-poly1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant {\@fig-chart}.
+Un modèle basé sur une équation polynomiale d'ordre 2 non forcé à l'origine (\@eq_param) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de plastique totale $plast_tot$. Le graphique du modèle montre un ajustement qui parait peu satisfaisant @fig-chart. Les statistiques des différents paramètres $plast_tot$ et $plast_tot^2$ sont dans le @tbl-coefs. L'analyse des résidus est effectuée @fig-resid.
 
 ```{r tbl-coefs}
 summary(microp_lm1.2) %>.%
@@ -57,26 +57,50 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-param}
+$$ {eq-param}
 
-L'\@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
+L'@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
 
 ```{r fig-resid}
 chart$residuals(microp_lm1.2)
 ```
 
+L'analyse des résidus (@fig-resid) est représentée par le graphique @fig-resid. L'étude des résidus montre que l'étendue des résidus par rapport aux valeurs prédites est assez bonne ainsi que la linéarité du modèle. Plusieurs valeurs extrêmes sont observables (A). La distribution des résidus est normale, on observe cependant quelques valeurs extrêmes (B). Il n'y a pas d'homoscédatiscité des résidus (C) et l'effet de levier est conséquent ce qui est causé par plusieurs valeurs (D).
 
 #### Modèle linéaire 1
 
 ```{r}
 lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3.2
-summary(microp_lm3.2) %>.%
-tabularise(.)
 ```
 
-```{r}
+Un modèle linéaire ne prenant pas en compte les interactions (\@eq_param1) est ajusté dans les données de l'efficacité photosynthétique $fvfm$ par rapport à la concentration de Chlorure de polyvinyle $plast_pvc$ {#eq-param1}. Le graphique du modèle montre un ajustement qui parait peu satisfaisant \@fig-chart1.Les statistiques des différents paramètres $\plast_tot$ et $\plast_tot^2$ sont dans le \@tbl-coefs1. L'analyse des résidus est effectuée \@fig-resid1.
 
+```{r tbl-coefs1}
+summary(microp_lm3.2)%>.%
+  tabularise(.)
 ```
+
+Les paramètres du modèle linéaire sans interaction sont ajustés dans les données de l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes. Les trois paramètres sont significativement différents de zéro au seuil $/alpha$ de 5%.
+
+```{r fig-chart1}
+chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x)
+```
+
+Ce graphique est une représentation de l'efficacité photosynthétique des populations phytoplanctonniques et bactériennes en fonction de la concentration du chlorure de polyvinyle et de la profondeur de l'océan. Les droites semblent graphiquement avoir des pentes et des ordonnées à l'origine différentes selon la profondeur de l'océan. L'enveloppe de confiance à 95% du modèle est de coloration grise. De nombreuses observations sont observables autour du modèle. L'enveloppe du modèle est grande. Les données ne semblent pas bien représentées par un modèle linéaire.
+
+$$
+`r eq__(microp_lm3.2, use_coefs = TRUE)`
+$$ {#eq-param1}
+
+L'@eq-param1 est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
+
+```{r fig-resid1}
+chart$residuals(microp_lm3.2)
+```
+
+L'analuse des résidus (@fig-resid1) montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez mauvaise (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 ## Discussion et Conclusion
 
