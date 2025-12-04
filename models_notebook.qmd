@@ -62,7 +62,7 @@ chart(data=microp, chla_fluo ~plast_pet %col=% temp)+
   geom_point()
 ```
 
-La masse en phytoplancton augmente en fonction de la concentration en polyéthylène théréphatalate. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populations microbiennes ici étudiées.
+La masse de phytoplancton augmente avec la concentration en polyéthylène téréphtalate, particulièrement à des températures plus élevées. Cependant, cette relation semble non linéaire et complexe, probablement influencée par plusieurs facteurs environnementaux. Une interprétation plausible de cette tendance est que la présence de polyéthylène téréphtalate affecte le cycle de l’azote au sein des populations microbiennes. Le PET semble donc avoir un impact notable sur la communauté microbienne ce qui est à confirmer par des analyses statistiques plus approfondies.
 
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 

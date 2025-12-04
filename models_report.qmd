@@ -16,6 +16,8 @@ bibliography: references.bib
 
 <!--% Rédigez l'introduction de ce rapport en 5-6 phrases.-->
 
+Dans cette analyse statistique
+
 ## But
 
 <!--% Rédigez le but de ce rapport en 2 phrases.-->
