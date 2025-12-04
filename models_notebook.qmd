@@ -1,5 +1,5 @@
 ---
-title: "Microplastic"
+title: "Impact du microplastique sur les communautés microbiennes"
 author: "Irma Gaziaux , Kelly Fodom, Lila Franchin , Arthur Miroux"
 format:
   html:
@@ -27,7 +27,7 @@ Les données viennent de l'étude expérimentale de Montaya et al. [-@Montoya202
 
 <!--% Indiquez ici d'où viennent les données et aussi quel logiciel (et version) vous utilisez pour les analyses. Inspirez-vous des projets du premier module de SDD II. -->
 
-Les données de cette étude proviennent du dépot Zenodo de Montaya et al. (2023) [@Montaya2023]. Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).e
+Les données de cette étude proviennent du dépot Zenodo de @Montoya2023 . Le logiciel utilisé est R (version 4.4.1) (https://www.r-project.org) (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
 
 ## Analyses
 
@@ -62,7 +62,7 @@ chart(data=microp, chla_fluo ~plast_pet %col=% temp)+
   geom_point()
 ```
 
-La masse en phytoplancton augmente en fonction de la concentration en polyéthylène théréphatalate. Une interprétation plausible de cette tendance est que la présence des microplastiques affecte le cycle de l'azote chez les populations microbiennes. On remarque que la température n'a que peu d'effet cependant, on retrouve des points à des températures plus hautes pour une concentration en microplastique à plus de 25g/cm³. Mais la température semble avoir un impacte secondaire sur le cycle de l'azote des populations microbiennes ici étudiées.
+La masse de phytoplancton augmente avec la concentration en polyéthylène téréphtalate, particulièrement à des températures plus élevées. Cependant, cette relation semble non linéaire et complexe, probablement influencée par plusieurs facteurs environnementaux. Une interprétation plausible de cette tendance est que la présence de polyéthylène téréphtalate affecte le cycle de l’azote au sein des populations microbiennes. Le PET semble donc avoir un impact notable sur la communauté microbienne ce qui est à confirmer par des analyses statistiques plus approfondies.
 
 <!--% Graphique et interprétation de l'étudiant #2 ci-dessous. -->
 
@@ -169,15 +169,14 @@ chart(data = microp, fvfm ~ plast_pvc %col=% depth_rec) +
 ```
 
 ```{r}
-chart$residuals(microp_lm3)
+chart$residuals(microp_lm3.2)
 ```
 
 $$
-`r eq__(microp_lm3, use_coefs = TRUE)`
+`r eq__(microp_lm3.2, use_coefs = TRUE)`
 $$
 
-Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple.
-Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus est assez bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
+Le modèle avec interaction a des variables qui sont non significativement différentes de 0 au seuil alpha de 5%. Un modèle plus simple, en retirant les interactions a été effectué. Tous les paramètres sont significativement différents de 0 au seuil alpha de 5%. Un test anova a été effectué, il n'y a pas de différence significative au seuil alpha de 5% entre les deux modèles. Nous choisissons donc le modèle le plus simple. Le modèle de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur montre que le R² ajusté est assez mauvais, mais les paramètres tels que sont tous significatifs. Nous avons choisi le modèle simple avec un décalage de l'ordonnée à l'origine car le modèle complet ne nous donnait pas de parametres tel que la pente significatif. La mise en graphique de notre modèle permet de montrer que la courbe pour une profondeur de -11.75 à -2.5 est croissante tandis que pour une profondeur de -2.5 à 1.75 est moins croissante et moins étendue. L'étude des résidus montre que l'étendue des résidus en fonction des valeurs prédites est assez bonne. La linéarité du modèle est moyenne(A). La normalité des résidus n'est pas bonne malgré des valeurs extrêmes observées pour les petites et grandes valeurs (B). Il n'y a pas d'homoscédatiscité (C). Pour certains points la distance de Cook est élevée, ces points sont visibles autant dans la partie supérieure à zéro que la partie inférieure à zéro, ces points ont une influence marquée c'est-à-dire un effet de levier marqué (D).
 
 #### Modèle linéaire 2
 
@@ -253,9 +252,11 @@ $$
 `r eq__(microp_glm, use_coefs = TRUE)`
 $$
 
-Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosm et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé.
 
-l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une non normalité mais la distribution est symétrique (en forme de S) (B). L'analyse des variances montre relativement une homoscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cook est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D). D'après cette analyse des résidus, le modèle généralisé semble robuste pour modéliser nos données.
+Toutes les variables sont significatives au seuil alpha de 5% . Le delta entre déviance totale et déviance résiduelle est faible. Le modèle n'est pas très bon. Les variables mésocosme et ammonium ont un impact sur la photosynthèse selon le modèle linéaire généralisé. Malgré un AIC légèrement moins favorable, le modèle avec interactions est meilleur car le modèle sans interaction n'est pas significatif.
+
+l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par rapport à celui des valeurs prédites (0.15), on observe aussi une non linéarité du modèle (A). Les résidus présente une légère normalité mais la distribution est asymétrique (en forme de S) (B). L'analyse des variances montre relativement une hétéroscédatiscité (C). Plusieurs valeurs extrêmes sont observées, la distance de Cooks est importante pour certains points qui tirent la courbe de part et d'autre d'où l'effet de levier observé (D).
+
 
 #### Modèle linéaire généralisé et/ou mixte 2
 
@@ -263,7 +264,7 @@ l'analyse des résidus montre que l'étendue des résidus est élevé (0.2) par 
 
 ```{r}
 microp_glm1<- glm(data = microp, chla_fluo ~ plast_pet * temp, family = gaussian) 
-summary_(microp_glm2) |> tabularise()
+summary_(microp_glm1) |> tabularise()
 
 microp_glm2<- glm(data = microp, chla_fluo ~ plast_pet + temp, family = gaussian) 
 summary_(microp_glm2) |> tabularise()

@@ -1,6 +1,6 @@
 ---
-title: "___"
-author: "___, ___, ___, ___"
+title: "Impact du microplastique sur les communautés microbiennes"
+author: "Irma Gaziaux, Lila Franchin, Arthur Miroux, Kelly Fodom"
 format:
   pdf:
     documentclass: report
@@ -16,13 +16,21 @@ bibliography: references.bib
 
 <!--% Rédigez l'introduction de ce rapport en 5-6 phrases.-->
 
+Dans cette analyse statistique
+
 ## But
 
 <!--% Rédigez le but de ce rapport en 2 phrases.-->
 
+Le but de ce rapport est d'évaluer l’impact des micro-plastiques et de facteurs abiotiques (température, ammonium...) sur les populations phytoplanctoniques et bactériennes. Cette population est à la base de la chaîne trophique marine d’où l'importance de cet étude.
+
 ## Matériel et méthodes
 
 <!--% Cette section doit comprendre deux parties. La première partie doit expliciter les données employées et la seconde traiter des analyses réalisées et des logiciels employés.-->
+
+Les données de cette étude proviennent du dépot Zenodo de @Montoya2023 . Les données comportent différentes variables telles que les concentrations de microplastique et d'ammonium. Pour évaluer l'impact sur les communautés microbiennes, différentes variables sont utilisées telles que la concentration d'acides nucléiques chez les bactéries, la masse du phytoplancton et l'efficacité de la photosynthèse.
+
+Le logiciel utilisé est R (version 4.4.1) (<https://www.r-project.org)> (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
 
 ## Résultats
 
