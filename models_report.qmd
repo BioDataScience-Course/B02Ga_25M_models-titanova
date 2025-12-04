@@ -53,7 +53,7 @@ Les paramètres du modèle polynomial d'ordre 2 sont ajustés dans les données 
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-poly1}
+$$ {#eq-poly1}
 
 ```{r fig-chart}
 chart(microp_lm1.2)
