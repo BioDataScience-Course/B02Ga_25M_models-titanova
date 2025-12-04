@@ -63,7 +63,7 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-poly1}
+$$
 
 #### Modèle linéaire 1
 
