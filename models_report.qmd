@@ -57,14 +57,13 @@ Ce graphique est une représentation du modèle polynomial d'ordre 2 ajusté aux
 
 $$
 `r eq__(microp_lm1.2, use_coefs = TRUE)`
-$${#eq-param}
+$$ {#eq-param}
 
 L'\@eq-param est la version paramétrée pour les données relatives à l'impact du microplastique sur la croissance des populations phytoplanctonniques et bactériennes
 
 ```{r fig-resid}
 chart$residuals(microp_lm1.2)
 ```
-
 
 #### Modèle linéaire 1
 
@@ -81,11 +80,5 @@ tabularise(.)
 ## Discussion et Conclusion
 
 <!--% En tenant compte du but de votre carnet de notes et de vos résultats, discutez de résultats et proposez des conclusions à votre analyse en 5 à 10 phrases. -->
-
-Discussion
-
-Dans l'optique d'évaluer l’impact des micro-plastiques et de facteurs abiotiques tels que la température et ammonium sur les populations phytoplanctoniques et bactériennes, plusieurs régressions et modèles linéaires ont été appliqué dans ce travail parmi lesquels deux modèles les plus pertinants ont été retenus : une régression linéaire entre efficacité photosynthétique et la quantité totale de plastique a été faite d'une part; d'autre par un modèle linéaire de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur sans interaction.
-
-la Conclusion
 
 ## Bibliographie
