@@ -89,7 +89,6 @@ L'analyse des résidus (@fig-resid) est représentée par le graphique @fig-resi
 
 #### Modèle linéaire 1 - Efficacité de la photosynthèse des populations microbiennes et phytoplanctoniques en fonction de la concentration en chlorure de polyvinyle et de de la profondeur
 
-
 ```{r}
 lm(data = microp, fvfm ~ plast_pvc + depth_rec)-> microp_lm3.2
 ```
