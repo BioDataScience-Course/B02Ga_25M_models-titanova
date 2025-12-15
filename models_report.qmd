@@ -30,6 +30,26 @@ Les données de cette étude proviennent du dépot Zenodo de @Montoya2023 . Les 
 
 Le logiciel utilisé est R (version 4.4.1) (<https://www.r-project.org)> (`r R.version.string`). plus précisément, le package {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io) (Linux Ubuntu 22.04). Ce package est utilisé afin d'exécuter le code et compiler la version finale de ce bloc-notes. Le jeu de données est remanié (documenté dans le fichier `R/import.R`).
 
+```{r setup, include=FALSE}
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configure Knitr to use AGG as graphic device
+knitr::opts_chunk$set(dev = "ragg_png")
+
+# Configuration de l'environnement
+SciViews::R("model", lang = "fr")
+```
+
+```{r import}
+# Lecture des données
+microp <- read("data/microp.rds")
+# Tableau des premières et dernières lignes
+tabularise$headtail(microp)
+
+```
+
 ## Résultats
 
 <!--% Présentez les deux modèles les plus pertinents que vous avez sélectionnés. Structurez la section en deux parties avec deux titres de niveau trois.-->
