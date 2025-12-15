@@ -140,4 +140,7 @@ Conclusion
 
 Notre étude montre que les modèles statistiques appliqués permettent de mettre en évidence des tendances générales entre microplastiques et efficacité photosynthétique, mais qu’ils restent limités dans leur capacité explicative. La régression polynomiale d’ordre 2 suggère une relation non linéaire des microplastiques totaux, tandis que le modèle linéaire impliquant le PVC et la profondeur met en évidence l’importance des facteurs environnementaux. Néanmoins, les faibles valeurs de R² ajusté et les diagnostics de résidus indiquent que ces modèles doivent être interprétés avec prudence. Des approches intégrant davantage de variables écologiques et des modèles non linéaires ou mixtes seraient nécessaires pour mieux comprendre ces variations.
 
+Galand PE, Casamayor EO, Kirchman DL, Lovejoy C. 2009. Écologie de la biosphère microbienne rare de l'Océan Arctique. PNAS 106:22427–32.
+Michels J, Stippkugel A, Lenz M, Wirtz K, Engel A. 2018. Agrégation rapide des microplastiques recouverts de biofilm avec des particules biogéniques marines. Proc. R. Soc. B 285:2018120
+
 ## Bibliographie
