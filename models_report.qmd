@@ -124,7 +124,7 @@ L'analyse des résidus (@fig-resid1) montre que l'étendue des résidus en fonct
 
 ## Discussion et Conclusion
 
-Discussion
+**Discussion**
 
 Dans l'optique d'évaluer l’impact des micro-plastiques et de facteurs abiotiques tels que la température et l'ammonium sur les populations phytoplanctoniques et bactériennes, plusieurs régressions et modèles linéaires ont été appliqués parmi lesquels deux modèles s'ajustant le mieux à nos données ont été retenus : une régression linéaire polynomiale d'ordre 2 entre efficacité photosynthétique et la quantité totale de plastique d'une part; d'autre part un modèle linéaire de l'efficacité de la photosynthèse en fonction de de la concentration en plastique de type pvc et la profondeur sans interaction.
 
@@ -136,7 +136,7 @@ Le second modèle linéaire, reliant l’efficacité photosynthétique à la con
 
 Toutefois, la faible qualité globale de l’ajustement, combinée à l’hétéroscédasticité et à la présence de points à fort effet de levier, limite la portée prédictive de ce modèle. Ces résultats confirment que les réponses des communautés microbiennes aux microplastiques sont complexes, multifactorielles et difficiles à capturer à l’aide de modèles linéaires simples comme souligné par [@michels2018].
 
-Conclusion
+**Conclusion**
 
 Notre étude montre que les modèles statistiques appliqués permettent de mettre en évidence des tendances générales entre microplastiques et efficacité photosynthétique, mais qu’ils restent limités dans leur capacité explicative. La régression polynomiale d’ordre 2 suggère une relation non linéaire des microplastiques totaux, tandis que le modèle linéaire impliquant le PVC et la profondeur met en évidence l’importance des facteurs environnementaux. Néanmoins, les faibles valeurs de R² ajusté et les diagnostics de résidus indiquent que ces modèles doivent être interprétés avec prudence. Des approches intégrant davantage de variables écologiques et des modèles non linéaires ou mixtes seraient nécessaires pour mieux comprendre ces variations.
 
