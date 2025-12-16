@@ -1,6 +1,6 @@
 # Modélisation de données librement choisies
 
-## Avant-propos
+## Test
 
 Ce projet s'étale sur plusieurs modules du cours de Science des Données Biologiques 2. Il nécessite d'avoir assimilé l'ensemble des notions des modules 1 à 4. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/B02Ga_models>.
 
